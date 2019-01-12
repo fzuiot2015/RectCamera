@@ -184,7 +184,8 @@ public class CameraHelper {
 			bos = new BufferedOutputStream(fos);
 			//按Bitmap.CompressFormat.JPEG图片格式以及100的画质，将图片转换为输出流
 			b0.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-		} catch (Exception error) {
+		} catch (Exception e) {
+            e.printStackTrace();
 			return null;
 		} finally {
 			try {
@@ -196,7 +197,9 @@ public class CameraHelper {
 					bos.flush();
 					bos.close();
 				}
-			} catch (IOException e) {}
+			} catch (IOException e) {
+			    e.printStackTrace();
+            }
 		}
 
 		for (int i = 0; i < 6; i++) {
@@ -207,7 +210,8 @@ public class CameraHelper {
 				fos = new FileOutputStream(imgFile1);
 				bos = new BufferedOutputStream(fos);
 				b1.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-			} catch (Exception error) {
+			} catch (Exception e) {
+                e.printStackTrace();
 				return null;
 			} finally {
 				try {
@@ -219,7 +223,9 @@ public class CameraHelper {
 						bos.flush();
 						bos.close();
 					}
-				} catch (IOException e) {}
+				} catch (IOException e) {
+				    e.printStackTrace();
+                }
 			}
 		}
 		return imgFilePath;
