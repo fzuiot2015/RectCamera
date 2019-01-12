@@ -172,183 +172,54 @@ public class CameraHelper {
 		}
 		FileOutputStream fos = null;
 		BufferedOutputStream bos = null;
-		String imgFilePath = null;
-		for( int i = 0;i <= 6;i++ ){
-			switch(i){
-				case 0:
-                    //文件路径路径
-					String imgFilePath0 = imgFileDir.getPath() + File.separator + this.generateFileName();
-					imgFilePath = imgFilePath0;
-					File imgFile0 = new File(imgFilePath0);
-					Bitmap b0 = this.cutImage(data,0,1); //剪切照片
-					try {
-						fos = new FileOutputStream(imgFile0);
-						bos = new BufferedOutputStream(fos);
-                        //按Bitmap.CompressFormat.JPEG图片格式以及100的画质，将图片转换为输出流
-						b0.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-					} catch (Exception error) {
-						return null;
-					} finally {
-						try {
-							if(fos != null){
-								fos.flush();
-								fos.close();
-							}
-							if(bos != null){
-								bos.flush();
-								bos.close();
-							}
-						} catch (IOException e) {}
+		String imgFilePath;
+
+		//文件路径路径
+		String imgFilePath0 = imgFileDir.getPath() + File.separator + this.generateFileName();
+		imgFilePath = imgFilePath0;
+		File imgFile0 = new File(imgFilePath0);
+		Bitmap b0 = this.cutImage(data,0,1); //剪切照片
+		try {
+			fos = new FileOutputStream(imgFile0);
+			bos = new BufferedOutputStream(fos);
+			//按Bitmap.CompressFormat.JPEG图片格式以及100的画质，将图片转换为输出流
+			b0.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+		} catch (Exception error) {
+			return null;
+		} finally {
+			try {
+				if(fos != null){
+					fos.flush();
+					fos.close();
+				}
+				if(bos != null){
+					bos.flush();
+					bos.close();
+				}
+			} catch (IOException e) {}
+		}
+
+		for (int i = 0; i < 6; i++) {
+			String imgFilePath1 = imgFileDir.getPath() + File.separator + this.generateFileName();
+			File imgFile1 = new File(imgFilePath1);
+			Bitmap b1 = this.cutImage(data,i,6); //剪切照片
+			try {
+				fos = new FileOutputStream(imgFile1);
+				bos = new BufferedOutputStream(fos);
+				b1.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+			} catch (Exception error) {
+				return null;
+			} finally {
+				try {
+					if(fos != null){
+						fos.flush();
+						fos.close();
 					}
-					break;
-
-				case 1:
-					String imgFilePath1 = imgFileDir.getPath() + File.separator + this.generateFileName();
-					File imgFile1 = new File(imgFilePath1);
-					Bitmap b1 = this.cutImage(data,0,6); //剪切照片
-					try {
-						fos = new FileOutputStream(imgFile1);
-						bos = new BufferedOutputStream(fos);
-						b1.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-					} catch (Exception error) {
-						return null;
-					} finally {
-						try {
-							if(fos != null){
-								fos.flush();
-								fos.close();
-							}
-							if(bos != null){
-								bos.flush();
-								bos.close();
-							}
-						} catch (IOException e) {}
+					if(bos != null){
+						bos.flush();
+						bos.close();
 					}
-					break;
-
-				case 2:
-					String imgFilePath2 = imgFileDir.getPath() + File.separator + this.generateFileName();
-					File imgFile2 = new File(imgFilePath2);
-					Bitmap b2 = this.cutImage(data,1,6); //剪切照片
-					try {
-						fos = new FileOutputStream(imgFile2);
-						bos = new BufferedOutputStream(fos);
-						b2.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-					} catch (Exception error) {
-						return null;
-					} finally {
-						try {
-							if(fos != null){
-								fos.flush();
-								fos.close();
-							}
-							if(bos != null){
-								bos.flush();
-								bos.close();
-							}
-						} catch (IOException e) {}
-					}
-					break;
-
-				case 3:
-					String imgFilePath3 = imgFileDir.getPath() + File.separator + this.generateFileName();
-					File imgFile3 = new File(imgFilePath3);
-					Bitmap b3 = this.cutImage(data,2,6); //剪切照片
-					try {
-						fos = new FileOutputStream(imgFile3);
-						bos = new BufferedOutputStream(fos);
-						b3.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-					} catch (Exception error) {
-						return null;
-					} finally {
-						try {
-							if(fos != null){
-								fos.flush();
-								fos.close();
-							}
-							if(bos != null){
-								bos.flush();
-								bos.close();
-							}
-						} catch (IOException e) {}
-					}
-					break;
-
-				case 4:
-					String imgFilePath4 = imgFileDir.getPath() + File.separator + this.generateFileName();
-					File imgFile4 = new File(imgFilePath4);
-					Bitmap b4 = this.cutImage(data,3,6); //剪切照片
-					try {
-						fos = new FileOutputStream(imgFile4);
-						bos = new BufferedOutputStream(fos);
-						b4.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-					} catch (Exception error) {
-						return null;
-					} finally {
-						try {
-							if(fos != null){
-								fos.flush();
-								fos.close();
-							}
-							if(bos != null){
-								bos.flush();
-								bos.close();
-							}
-						} catch (IOException e) {}
-					}
-					break;
-
-				case 5:
-					String imgFilePath5 = imgFileDir.getPath() + File.separator + this.generateFileName();
-					File imgFile5 = new File(imgFilePath5);
-					Bitmap b5 = this.cutImage(data,4,6); //剪切照片
-					try {
-						fos = new FileOutputStream(imgFile5);
-						bos = new BufferedOutputStream(fos);
-						b5.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-					} catch (Exception error) {
-						return null;
-					} finally {
-						try {
-							if(fos != null){
-								fos.flush();
-								fos.close();
-							}
-							if(bos != null){
-								bos.flush();
-								bos.close();
-							}
-						} catch (IOException e) {}
-					}
-					break;
-
-				case 6:
-					String imgFilePath6 = imgFileDir.getPath() + File.separator + this.generateFileName();
-					File imgFile6 = new File(imgFilePath6);
-					Bitmap b6 = this.cutImage(data,5,6); //剪切照片
-					try {
-						fos = new FileOutputStream(imgFile6);
-						bos = new BufferedOutputStream(fos);
-						b6.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-					} catch (Exception error) {
-						return null;
-					} finally {
-						try {
-							if(fos != null){
-								fos.flush();
-								fos.close();
-							}
-							if(bos != null){
-								bos.flush();
-								bos.close();
-							}
-						} catch (IOException e) {}
-					}
-					break;
-
-				default: break;
-
-
+				} catch (IOException e) {}
 			}
 		}
 		return imgFilePath;
