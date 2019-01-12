@@ -33,36 +33,36 @@ public class CameraHelper {
 	private ToneGenerator tone;
 	private String filePath;// = "/carchecker/photo";
 	private boolean isPreviewing;
-	
+
 	private static CameraHelper helper;
 	private Camera camera;
 	private MaskSurfaceView surfaceView;
-	
+
 //	分辨率
 	private Size resolution;
-	
+
 //	照片质量
 	private int picQuality = 100;
-	
+
 //	照片尺寸
 	private Size pictureSize;
-	
+
 //	闪光灯模式(default：自动)
 	private String flashlightStatus = Camera.Parameters.FLASH_MODE_ON;
-	
+
 	public enum Flashlight{
 		AUTO, ON, OFF
 	}
-	
+
 	private CameraHelper(){}
-	
+
 	public static synchronized CameraHelper getInstance(){
 		if(helper == null){
 			helper = new CameraHelper();
 		}
 		return helper;
 	}
-	
+
 	/**
 	 * 设置照片质量
 	 * @param picQuality
@@ -72,7 +72,7 @@ public class CameraHelper {
 		this.picQuality = picQuality;
 		return helper;
 	}
-	
+
 	/**
 	 * 设置闪光灯模式
 	 * @param status
@@ -94,7 +94,7 @@ public class CameraHelper {
 		}
 		return helper;
 	}
-	
+
 	/**
 	 * 设置文件保存路径(default: /mnt/sdcard/DICM)
 	 * @param path
@@ -104,12 +104,12 @@ public class CameraHelper {
 		this.filePath = path;
 		return helper;
 	}
-	
+
 	public CameraHelper setMaskSurfaceView(MaskSurfaceView surfaceView){
 		this.surfaceView = surfaceView;
 		return helper;
 	}
-	
+
 	/**
 	 * 打开相机并开启预览
 	 * @param holder		SurfaceHolder
@@ -127,7 +127,7 @@ public class CameraHelper {
 		this.initParameters(holder, format, width, height, screenWidth, screenHeight);
 		this.startPreview();
 	}
-	
+
 	/**
 	 * 照相
 	 */
@@ -159,7 +159,7 @@ public class CameraHelper {
 			}
 		});
 	}
-	
+
 	/**
 	 * 裁剪并保存照片
 	 * @param data
@@ -184,7 +184,7 @@ public class CameraHelper {
 					try {
 						fos = new FileOutputStream(imgFile0);
 						bos = new BufferedOutputStream(fos);
-                        //按Bitmap.CompressFormat.JPEG图片格式以及100的画质，将图片转换为输出流			
+                        //按Bitmap.CompressFormat.JPEG图片格式以及100的画质，将图片转换为输出流
 						b0.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 					} catch (Exception error) {
 						return null;
@@ -201,14 +201,14 @@ public class CameraHelper {
 						} catch (IOException e) {}
 					}
 					break;
-				
+
 				case 1:
 					String imgFilePath1 = imgFileDir.getPath() + File.separator + this.generateFileName();
 					File imgFile1 = new File(imgFilePath1);
 					Bitmap b1 = this.cutImage(data,0,6); //剪切照片
 					try {
 						fos = new FileOutputStream(imgFile1);
-						bos = new BufferedOutputStream(fos);		
+						bos = new BufferedOutputStream(fos);
 						b1.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 					} catch (Exception error) {
 						return null;
@@ -225,14 +225,14 @@ public class CameraHelper {
 						} catch (IOException e) {}
 					}
 					break;
-					
+
 				case 2:
 					String imgFilePath2 = imgFileDir.getPath() + File.separator + this.generateFileName();
 					File imgFile2 = new File(imgFilePath2);
 					Bitmap b2 = this.cutImage(data,1,6); //剪切照片
 					try {
 						fos = new FileOutputStream(imgFile2);
-						bos = new BufferedOutputStream(fos);		
+						bos = new BufferedOutputStream(fos);
 						b2.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 					} catch (Exception error) {
 						return null;
@@ -248,15 +248,15 @@ public class CameraHelper {
 							}
 						} catch (IOException e) {}
 					}
-					break;	
-					
+					break;
+
 				case 3:
 					String imgFilePath3 = imgFileDir.getPath() + File.separator + this.generateFileName();
 					File imgFile3 = new File(imgFilePath3);
 					Bitmap b3 = this.cutImage(data,2,6); //剪切照片
 					try {
 						fos = new FileOutputStream(imgFile3);
-						bos = new BufferedOutputStream(fos);		
+						bos = new BufferedOutputStream(fos);
 						b3.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 					} catch (Exception error) {
 						return null;
@@ -272,15 +272,15 @@ public class CameraHelper {
 							}
 						} catch (IOException e) {}
 					}
-					break;	
-					
+					break;
+
 				case 4:
 					String imgFilePath4 = imgFileDir.getPath() + File.separator + this.generateFileName();
 					File imgFile4 = new File(imgFilePath4);
 					Bitmap b4 = this.cutImage(data,3,6); //剪切照片
 					try {
 						fos = new FileOutputStream(imgFile4);
-						bos = new BufferedOutputStream(fos);		
+						bos = new BufferedOutputStream(fos);
 						b4.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 					} catch (Exception error) {
 						return null;
@@ -296,15 +296,15 @@ public class CameraHelper {
 							}
 						} catch (IOException e) {}
 					}
-					break;	
-					
+					break;
+
 				case 5:
 					String imgFilePath5 = imgFileDir.getPath() + File.separator + this.generateFileName();
 					File imgFile5 = new File(imgFilePath5);
 					Bitmap b5 = this.cutImage(data,4,6); //剪切照片
 					try {
 						fos = new FileOutputStream(imgFile5);
-						bos = new BufferedOutputStream(fos);		
+						bos = new BufferedOutputStream(fos);
 						b5.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 					} catch (Exception error) {
 						return null;
@@ -320,15 +320,15 @@ public class CameraHelper {
 							}
 						} catch (IOException e) {}
 					}
-					break;	
-					
+					break;
+
 				case 6:
 					String imgFilePath6 = imgFileDir.getPath() + File.separator + this.generateFileName();
 					File imgFile6 = new File(imgFilePath6);
 					Bitmap b6 = this.cutImage(data,5,6); //剪切照片
 					try {
 						fos = new FileOutputStream(imgFile6);
-						bos = new BufferedOutputStream(fos);		
+						bos = new BufferedOutputStream(fos);
 						b6.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 					} catch (Exception error) {
 						return null;
@@ -344,16 +344,16 @@ public class CameraHelper {
 							}
 						} catch (IOException e) {}
 					}
-					break;	
-					
-				default: break;	
-					
-					
-			}	
+					break;
+
+				default: break;
+
+
+			}
 		}
 		return imgFilePath;
 	}
-	
+
 	/**
 	 * 生成图片名称
 	 * @return
@@ -365,8 +365,8 @@ public class CameraHelper {
 		Random ran = new Random();
 		int ra = ran.nextInt(1000) + 1;
 		String r =String.valueOf(ra);
-		
-		
+
+
 		return "img_" + strDate +  "_" + r + ".jpg";
 	}
 
@@ -387,7 +387,7 @@ public class CameraHelper {
 		}
 		return file;
 	}
-	
+
 	/**
 	 * 初始化相机参数
 	 * @param holder		SurfaceHolder
@@ -400,9 +400,9 @@ public class CameraHelper {
 	private void initParameters(SurfaceHolder holder, int format, int width, int height, int screenWidth, int screenHeight){
 		try {
 			Parameters p = this.camera.getParameters();
-			
+
 			this.camera.setPreviewDisplay(holder);
-			
+
 			if(width > height){
 //				横屏
 				this.camera.setDisplayOrientation(0);
@@ -410,16 +410,16 @@ public class CameraHelper {
 //				竖屏
 				this.camera.setDisplayOrientation(90);
 			}
-			
+
 //			照片质量
 			p.set("jpeg-quality", picQuality);
-			
+
 //			设置照片格式
 			p.setPictureFormat(PixelFormat.JPEG);
-			
+
 //			设置闪光灯
 			p.setFlashMode(this.flashlightStatus);
-			
+
 //			设置最佳预览尺寸
 			List<Size> previewSizes = p.getSupportedPreviewSizes();
 //			设置预览分辨率
@@ -442,20 +442,20 @@ public class CameraHelper {
 			} catch (Exception e) {
 				Log.e(TAG, "不支持的照片尺寸: "+this.pictureSize.width+" × "+this.pictureSize.height);
 			}
-			
+
 			this.camera.setParameters(p);
 		} catch (Exception e) {
 			Log.e(TAG, "相机参数设置错误");
 		}
 	}
-	
+
 	/**
 	 * 释放Camera
 	 */
 	public void releaseCamera(){
 		if(this.camera!=null){
 			if(this.isPreviewing){
-				this.stopPreview(); 
+				this.stopPreview();
 			}
 			this.camera.setPreviewCallback(null);
 			isPreviewing = false;
@@ -463,7 +463,7 @@ public class CameraHelper {
 			this.camera = null;
 		}
 	}
-	
+
 	/**
 	 * 停止预览
 	 */
@@ -473,7 +473,7 @@ public class CameraHelper {
 			this.isPreviewing = false;
 		}
 	}
-	
+
 	/**
 	 * 开始预览
 	 */
@@ -484,7 +484,7 @@ public class CameraHelper {
 			this.isPreviewing = true;
 		}
 	}
-	
+
 	/**
 	 * 裁剪照片
 	 * @param data
@@ -500,7 +500,7 @@ public class CameraHelper {
 //			以bitmap为原图，创建新的图片，指定起始坐标以及新图像的宽、高等			
 			bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 		}
-		
+
 		if(this.surfaceView == null){
 			return bitmap;
 		}else{
@@ -537,7 +537,7 @@ public class CameraHelper {
 			if(r!=4/3 || r!=3/4 || r!=16/9 || r!=9/16){
 				continue;
 			}
-			
+
 			double ratio = (double) size.width / size.height;
 			if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE)
 				continue;
@@ -564,15 +564,15 @@ public class CameraHelper {
 		}
 		return optimalSize;
 	}
-	
+
 	/**
 	 * 设置照片尺寸为最接近屏幕尺寸
 	 * @param list
-	 * @return 
+	 * @return
 	 */
 	private void setPicutreSize(List<Size> list, int screenWidth, int screenHeight){
 		int approach = Integer.MAX_VALUE;
-		
+
 		for(Size size : list){
 			int temp = Math.abs(size.width-screenWidth + size.height-screenHeight);
 //			System.out.println("approach: "+approach +", temp: "+ temp+", size.width: "+size.width+", size.height: "+size.height);
