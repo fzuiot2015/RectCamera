@@ -361,11 +361,9 @@ public class CameraHelper {
 	private String generateFileName(){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss", Locale.getDefault());
 		String strDate = dateFormat.format(new Date());  //获取当前时间，转化为以上指定格式
-//      在文件名后添加一位随机数
-		Random ran = new Random();
-		int ra = ran.nextInt(1000) + 1;
-		String r =String.valueOf(ra);
-
+//      在文件名后添加当前微秒值
+		long nanoTime = System.nanoTime();
+		String r =String.valueOf(nanoTime);
 
 		return "img_" + strDate +  "_" + r + ".jpg";
 	}
